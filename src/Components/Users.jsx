@@ -1,4 +1,5 @@
 import React, { use, useState } from "react";
+import { Link } from "react-router";
 
 const Users = ({ usersPromise }) => {
   const initialUsers = use(usersPromise);
@@ -33,13 +34,25 @@ const Users = ({ usersPromise }) => {
   };
      const handleUserDelete=(id)=>{
         console.log('Delete This User', id);
-        
+        fetch(`http://localhost:3000/users/${id}`,{
+            method:'DELETE'
+        })
+        .then(res => res.json())
+        .then(data=>{
+          if(data.deletedCount){
+            const remainingUsers =users.filter(user =>user._id !== id);
+            setUsers(remainingUsers)
+            console.log('after delete',data);
+          }
+            
+        })
       }
   return (
     <div className="border border-amber-50 rounded-2xl shadow-2xl py-15">
       {/* add user */}
       <div >
-        <h1 className="text-2xl font-bold text-center">Simple Crud Application</h1>
+        <h1 className="text-2xl font-bold text-center">Simple Crud Operation</h1>
+        <h3 className="text-xl font-semibold text-center"> Users: {users.length}</h3>
         <form className="flex justify-center items-center py-5" onSubmit={handleAddUser}>
           <input className="border-2 bg-amber-100 rounded-2xl" type="text" name="name" />
           <br />
@@ -50,10 +63,12 @@ const Users = ({ usersPromise }) => {
       </div>
       {/* view data */}
       <div className="text-center border rounded-2xl">
+        
         {users.map((user) => (
         <p key={user._id}>
           {user.name}:{user.email}
-          <button onClick={()=> handleUserDelete (user._id)} className="btn text-red-600 pl-5" >X</button>
+          <Link className="btn bg-amber-200 mx-2 text-blue-600" to={`/users/${user._id}`}>Details</Link>
+          <button onClick={()=> handleUserDelete (user._id)} className="btn text-white bg-red-600 pl-5" >X</button>
         </p>
       ))}
       </div>
