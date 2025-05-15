@@ -34,12 +34,12 @@ const UpdateUser = () => {
              <div >
         <h1 className="text-2xl font-bold text-center">Update User</h1>
     
-        <form className="flex justify-center items-center py-5" onSubmit={handleUpdateUser}>
-          <input className="border-2 p-2 m-2 bg-amber-100 rounded-2xl" type="text" name="name" defaultValue={user.name} />
+        <form className="lg:flex lg:justify-center lg:items-center space-y-4 lg:py-5" onSubmit={handleUpdateUser}>
+          <input className="border-2 lg:p-2 lg:m-2 bg-amber-100 rounded sm:pl-10 lg:rounded-2xl" type="text" name="name" defaultValue={user.name} />
           <br />
-          <input className="border-2 p-2 m-2 bg-amber-100 rounded-2xl" type="email" name="email" defaultValue={user.email} />
+          <input className="border-2 lg:p-2 lg:m-2 bg-amber-100 rounded sm:pl-10 lg:rounded-2xl" type="email" name="email" defaultValue={user.email} />
           <br />
-          <input className="border-2 p-2 m-2 rounded-2xl bg-amber-500" type="submit" value="Update User" />
+          <input className="border-2 lg:p-2 lg:m-2 rounded sm:pl-10 lg:rounded-2xl bg-amber-500" type="submit" value="Update User" />
         </form>
       </div>
         </div>

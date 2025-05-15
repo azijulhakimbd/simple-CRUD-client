@@ -57,23 +57,23 @@ const Users = ({ usersPromise }) => {
           Users: {users.length}
         </h3>
         <form
-          className="flex justify-center items-center py-5"
+          className="lg:flex lg:justify-center lg:items-center space-y-4 lg:py-5"
           onSubmit={handleAddUser}
         >
           <input
-            className="border-2 p-2 m-2  bg-amber-100 rounded-2xl"
+            className="border-2 lg:p-2 lg:m-2  bg-amber-100 rounded-2xl"
             type="text"
             name="name"
           />
           <br />
           <input
-            className="border-2 p-2 m-2  bg-amber-100 rounded-2xl"
+            className="border-2 lg:p-2 lg:m-2  bg-amber-100 rounded-2xl"
             type="email"
             name="email"
           />
           <br />
           <input
-            className="border-2 p-2 m-2  rounded-2xl bg-amber-500"
+            className="border-2 lg:p-2 lg:m-2  rounded-2xl bg-amber-500"
             type="submit"
             value="Add User"
           />
