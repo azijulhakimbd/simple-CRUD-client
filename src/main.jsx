@@ -9,6 +9,8 @@ import {
 import Root from './Components/Root.jsx';
 import App from './App.jsx';
 import UserDetails from './Components/UserDetails.jsx';
+import UpdateUser from './Components/UpdateUser.jsx';
+import ErrorPage from './Components/ErrorPage.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,9 +23,17 @@ const router = createBrowserRouter([
         path:'users/:id',
         loader:({params})=>fetch(`http://localhost:3000/users/${params.id}`),
         Component:UserDetails,
+      },
+      {
+        path:'/update/:id',
+        loader:({params})=> fetch(`http://localhost:3000/users/${params.id}`),
+        Component: UpdateUser,
       }
     ]
-  },
+  },{
+    path:'/*',
+    Component:ErrorPage
+  }
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
